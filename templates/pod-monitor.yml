@@ -1,0 +1,25 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: audit-log-verifier-pod-monitor
+spec:
+  selector:
+    matchLabels:
+      app: audit-log-verifier
+  podMetricsEndpoints:
+    - path: probe
+      scheme: http
+      scrapeTimeout: 5s
+      port: http
+      params:
+       name: 
+       - audit-write-time 
+      relabelings:
+        - action: replace
+          sourceLabels:
+            - __meta_kubernetes_pod_node_name
+          targetLabel: node      
+  namespaceSelector:
+    matchNames:
+      - audito-maldito

@@ -1,0 +1,9 @@
+scripts:
+  - name: audit-write-time
+    script: |
+      #!/bin/bash
+      if (( $(($(date +%s) - $(stat -c %Y /var/log/audit/audit.log))) < 600 )); then
+        exit 0
+      else
+         exit 1
+      fi
