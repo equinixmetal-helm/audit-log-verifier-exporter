@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  annotations:
+  labels:
+    app: {{ template "app.name" . }}
+    component: app
+  name: {{ template "app.name" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "app.name" . }}
+      component: app
+  template:
+    metadata:
+      labels:
+        component: app
+        app: {{ template "app.name" . }}
+    spec:
+      containers:
+      - name: audit-log-verifier
+        ports:
+          - containerPort: 9172
+            name: http
+            protocol: TCP      
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{.Values.image.pullPolicy }}
+        resources:
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        args:
+          -  '--config.file'
+          -  '/usr/app/script-exporter.yml'
+          -  '--config.shell'
+          -  '/bin/bash'
+        volumeMounts:
+        - name: auditlog
+          mountPath: /var/log/audit/audit.log
+          readOnly: true
+      volumes:
+      - name: auditlog
+        hostPath:
+          path: /var/log/audit/audit.log
