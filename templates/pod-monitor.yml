@@ -22,4 +22,4 @@ spec:
           targetLabel: node      
   namespaceSelector:
     matchNames:
-      - audito-maldito
+      - {{ template "app.name" . }}
