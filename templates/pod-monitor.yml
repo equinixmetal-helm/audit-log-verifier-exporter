@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: audit-log-verifier
+      app: {{ template "app.name" . }}
   podMetricsEndpoints:
     - path: probe
       scheme: http
@@ -22,4 +22,4 @@ spec:
           targetLabel: node      
   namespaceSelector:
     matchNames:
-      - {{ template "app.name" . }}
+      - {{ template "app.name" . }}-exporter

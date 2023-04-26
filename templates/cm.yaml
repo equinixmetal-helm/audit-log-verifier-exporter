@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  app: {{ template "app.name" . }}
+data:
+  script-exporter.yml: |
+    scripts:
+      - name: audit-write-time
+        script: |
+          #!/bin/bash
+          if (( $(($(date +%s) - $(stat -c %Y /var/log/audit/audit.log))) < 60 )); then
+            exit 0
+          else
+             exit 1
+          fi
