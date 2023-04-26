@@ -35,7 +35,7 @@ spec:
             memory: 200Mi
         args:
           -  '--config.file'
-          -  '/usr/app/script_exporter.yml'
+          -  '/usr/app/script-exporter.yml'
           -  '--config.shell'
           -  '/bin/bash'
         volumeMounts:
