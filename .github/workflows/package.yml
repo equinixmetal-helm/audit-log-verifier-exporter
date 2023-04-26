@@ -14,7 +14,7 @@ on:
       - v**
 
 env:
-  REGISTRY: docker pull ghcr.io/equinixmetal-helm/audit-log-verifier-exporter
+  REGISTRY: ghcr.io/equinixmetal-helm/audit-log-verifier-exporter
   API_IMAGE_NAME: audit-log-verifier-exporter
   Version: ${{ github.ref_name }}
 
