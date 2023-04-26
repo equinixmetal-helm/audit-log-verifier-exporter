@@ -35,14 +35,20 @@ spec:
             memory: 200Mi
         args:
           -  '--config.file'
-          -  '/usr/app/script-exporter.yml'
+          -  '/usr/app/config/script-exporter.yml'
           -  '--config.shell'
           -  '/bin/bash'
         volumeMounts:
         - name: auditlog
           mountPath: /var/log/audit/audit.log
           readOnly: true
+        - name: script-exporter-configmap
+          mountPath: /usr/app/config
+          readOnly: true
       volumes:
       - name: auditlog
         hostPath:
           path: /var/log/audit/audit.log
+      - name: script
+        configMap:
+          name: script-exporter-configmap

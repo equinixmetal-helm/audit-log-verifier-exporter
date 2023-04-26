@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  app: {{ template "app.name" . }}
+  name: script-exporter-configmap
 data:
   script-exporter.yml: |
     scripts:
