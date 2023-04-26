@@ -6,17 +6,17 @@
 # GitHub recommends pinning actions to a commit SHA.
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
-
-name: Create and publish exporter image
+name: Release
 
 on:
   push:
-    branches: ['main'] 
+    tags:
+      - v**
 
 env:
-  REGISTRY: ghcr.io/equinixmetal-helm/audit-log-verifier-exporter
+  REGISTRY: ${{ github.repository }}
   API_IMAGE_NAME: audit-log-verifier-exporter
-  Version: v0.1.0
+  Version: {{ github.ref_name }}
 
 jobs:
   build-and-push-image:
