@@ -11,7 +11,7 @@ name: Create and publish exporter image
 
 on:
   push:
-    branches: ['main', 'adds-templates'] 
+    branches: ['main'] 
 
 env:
   REGISTRY: ghcr.io/equinixmetal-helm/audit-log-verifier-exporter
