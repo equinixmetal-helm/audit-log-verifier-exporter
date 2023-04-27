@@ -10,7 +10,7 @@ spec:
   podMetricsEndpoints:
     - path: probe
       scheme: http
-      interval: 1d
+      interval: 1h
       scrapeTimeout: 5s
       port: http
       params:
