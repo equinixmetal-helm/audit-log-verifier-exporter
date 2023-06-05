@@ -1,9 +1,5 @@
 apiVersion: v2
 appVersion: "1.0"
-description: A Helm chart for things (update mE!)
-name: helmchart
+description: A Helm chart for verifying audit.log is being written to.
+name: audit-log-verifier
 version: 1.0.0
-# dependencies:
-# - name: ifyouneedthem
-#   version: "1.0.0"
-#   repository: "https://helm.stuff.com"
