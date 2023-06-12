@@ -39,16 +39,16 @@ spec:
           -  '--config.shell'
           -  '/bin/bash'
         volumeMounts:
-        - name: auditlog
-          mountPath: /var/log/audit/audit.log
+        - name: audit
+          mountPath: /var/log/audit
           readOnly: true
         - name: script
           mountPath: /usr/app/config
           readOnly: true
       volumes:
-      - name: auditlog
+      - name: audit
         hostPath:
-          path: /var/log/audit/audit.log
+          path: /var/log/audit
       - name: script
         configMap:
           name: script-exporter-configmap
