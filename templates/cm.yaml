@@ -8,7 +8,7 @@ data:
       - name: audit-write-time
         script: |
           #!/bin/bash
-          if (( $(($(date +%s) - $(stat -c %Y /var/log/audit/audit.log))) < {{ .Values.MaxWriteElaspedTime }} )); then
+          if (( $(($(date +%s) - $(stat -c %Y /var/log/audit/audit.log))) < {{ .Values.maxWriteElaspedTime }} )); then
             exit 0
           else
              exit 1
