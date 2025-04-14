@@ -1,5 +1,5 @@
 image: 
   repository: ghcr.io/equinixmetal-helm/audit-log-verifier-exporter/audit-log-verifier-exporter
-  tag: v0.1.1
+  tag: v0.1.2
   pullPolicy: IfNotPresent
 maxWriteElaspedTime: 43200
